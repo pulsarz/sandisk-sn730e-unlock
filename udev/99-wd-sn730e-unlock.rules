@@ -1,0 +1,7 @@
+# Automatically unlock shucked Western Digital SN730E NVMe drives on boot
+# Install script to /usr/local/sbin/unlock_sn730e.sh (chmod +x)
+# Install this rule to /etc/udev/rules.d/99-wd-sn730e-unlock.rules
+# Then run: sudo udevadm control --reload-rules
+#
+# Change "mode2" to "mid", "high", or "max" if you have a heatsink installed and have verified stability.
+ACTION=="add", SUBSYSTEM=="nvme", ATTRS{model}=="Western Digital SN730E*", RUN+="/usr/local/sbin/unlock_sn730e.sh /dev/%k mode2"
